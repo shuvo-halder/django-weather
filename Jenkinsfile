@@ -11,6 +11,12 @@ pipeline {
                 cleanWs()
             }
         }
+        stage ("checkout"){
+            steps {
+                checkout scm
+                sh 'ls -lah'
+            }
+        }
         stage ('build and deploy'){
             steps {
                 // sh 'docker compose stop dj-weather'
