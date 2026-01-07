@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    image: dj-weather:latest
+    container_name: dj-weather:latest
+    ports:
+      - "8160:8000"
+    environment:
+      SQLITE_PATH: /app/db/db.sqlite3
+      STATIC_ROOT: /app/static
+    volumes:
+      - ./data/sqlite:/app/db
+      - ./data/static:/app/static

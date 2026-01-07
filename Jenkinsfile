@@ -11,5 +11,24 @@ pipeline {
                 cleanWs()
             }
         }
+        stage ('image build'){
+            steps {
+                sh 'docker compose stop dj-weather'
+                sh 'docker compose rm -f dj-weather'
+                sh 'echo "buildind and pull up this container...................................."'
+                sh 'docker compose build --no-cache --force-rm dj-weather'
+                sh 'docker compose up -d --force-recreate dj-weather' 
+            }
+        }
+    }
+    post {
+        success {
+            echo "pipeline success!"
+        }
+        failure {
+            echo "pipeline error!"
+        }
     }
 }
+
+    
