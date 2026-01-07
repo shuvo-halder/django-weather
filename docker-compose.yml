@@ -1,9 +1,8 @@
-version: '3.8'
 services:
   web:
     build: .
-    image: dj-weather:latest
-    container_name: dj-weather:latest
+    image: dj-weather
+    container_name: dj-weather
     ports:
       - "8160:8000"
     environment:
