@@ -26,6 +26,11 @@ pipeline {
                 sh 'docker compose up -d --force-recreate dj-weather' 
             }
         }
+        stage('Collect static') {
+            steps { 
+                sh "docker exec dj-weather python manage.py collectstatic --noinput" 
+            } 
+        }
     }
     post {
         success {
